@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "github.com/demo/grpc-server/proto";
+
+package helloworld;
+
+service OperacionAritmetica {
+  rpc LlenarJson (LlenarRequest) returns (LlenarReply) {};
+}
+
+message LlenarRequest {
+  string game_id= 1;
+  string players = 2;
+}
+message LlenarReply {
+  string winner = 1;
+}

@@ -1,0 +1,41 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: srv-sockets-react
+  namespace: squidgame
+  labels:
+    app: srv-sockets-react
+spec:
+  selector:
+    matchLabels:
+      app: srv-sockets-react
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: srv-sockets-react
+    spec:
+      hostname: grpc-pod-logs
+      containers:
+        - name: sockets-front
+          image: sergiounix/server-node-sockets-f3
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: srv-sockets-react
+  name: srv-service-sockets
+  namespace: squidgame
+spec:
+  type: LoadBalancer
+  selector:
+    app: srv-sockets-react
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP

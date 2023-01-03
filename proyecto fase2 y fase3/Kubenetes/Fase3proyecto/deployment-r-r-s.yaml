@@ -1,0 +1,47 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-react-deployment
+  namespace: squidgame
+  labels:
+    app: front-react-deployment
+spec:
+  selector:
+    matchLabels:
+      app: front-react-deployment
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: front-react-deployment
+    spec:
+      hostname: grpc-pod-h
+      containers:
+        - name: react-app
+          image: sergiounix/front_fase3_react_graficas
+          env:
+          - name: REACT_APP_HOST_NORMAL
+            value: 34.127.97.175:2000
+          - name : REACT_APP_HOST_SOCKET  
+            value: 35.197.48.165:8080      
+          ports:
+            - containerPort: 80
+
+       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: front-react-deployment
+  name: svc-react
+  namespace: squidgame
+spec:
+  type: ClusterIP
+  selector:
+    app: front-react-deployment
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP

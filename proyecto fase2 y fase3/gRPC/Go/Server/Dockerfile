@@ -1,0 +1,14 @@
+FROM golang:1.17 AS builder
+RUN apt-get update
+ENV GO111MODULE=on \
+    CGO_ENABLED=0 \
+    GOOS=linux \
+    GOARCH=amd64 
+WORKDIR /go/src/app
+copy go.mod .
+RUN go mod tidy
+COPY . .
+
+
+RUN go install
+CMD ["go","run", "Server-gRPC.go"]

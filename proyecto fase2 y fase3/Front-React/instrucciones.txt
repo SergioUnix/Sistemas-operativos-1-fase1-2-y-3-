@@ -1,0 +1,4 @@
+npm install socket.io-client
+
+//para iniciar la app de React
+npm start

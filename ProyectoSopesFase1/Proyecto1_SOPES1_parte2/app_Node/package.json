@@ -1,0 +1,17 @@
+{
+  "name": "app_node",
+  "version": "1.0.0",
+  "description": "node con express para conectar con mongo y socket con react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josue Gonzalez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.4",
+    "socket.io": "^4.4.1"
+  }
+}

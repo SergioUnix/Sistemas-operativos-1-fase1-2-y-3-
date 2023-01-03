@@ -1,0 +1,46 @@
+version: "3.9"
+
+services: 
+  db:
+    image: mongo:4.2
+    container_name: dbmongo4.2
+    environment:
+        MONGO_INITDB_ROOT_USERNAME:   mongoadmin
+        MONGO_INITDB_ROOT_PASSWORD:   So1pass1S_2022 
+    ports:
+     - "27017:27017"
+    restart: always
+
+    volumes:
+      - /mongo-volume:/data/db
+
+    networks:
+     -  clas-net
+
+  back:
+      image: sergiounix/backend_201020252
+      container_name: back
+      ports:
+      - "3000:3000"
+      restart: always
+
+      depends_on:
+      - db
+      networks:
+      -  clas-net
+
+  fro:
+      image: sergiounix/fron_201020252
+      container_name: front
+      ports:
+      - "4200:80"
+      restart: always
+      depends_on:
+      - back
+      networks:
+      -  clas-net
+
+networks:
+  clas-net:
+    name : "clas-net"
+    driver : bridge

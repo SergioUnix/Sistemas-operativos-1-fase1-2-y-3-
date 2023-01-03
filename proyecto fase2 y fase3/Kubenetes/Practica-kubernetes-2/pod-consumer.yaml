@@ -1,0 +1,21 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: consumer-kafka
+  namespace: squidgame
+  labels:
+    app: consumer-kafka
+    
+spec:
+    containers:
+        - name: consumer-kafka-pop
+          image: sergiounix/kafka-consumer-go_fase2
+          env:
+          - name: TOPIC
+            value: my-topic
+          - name: KAFKA_BROKER
+            value: my-cluster-kafka-bootstrap.kafka
+          ports:
+            - containerPort: 2500

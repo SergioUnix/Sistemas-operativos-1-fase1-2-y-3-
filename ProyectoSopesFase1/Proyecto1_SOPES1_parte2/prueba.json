@@ -1,0 +1,11 @@
+{
+"nombreWM":"vm1",
+"endpoint":"/getDataRAM",
+"data": [{
+    "total": 4000,
+    "memoriaEnUso":2000,
+    "porcentaje" : 54,
+    "memoriaLibre": 2000
+}],
+"date": "05/03/2022 14:15:00"
+}

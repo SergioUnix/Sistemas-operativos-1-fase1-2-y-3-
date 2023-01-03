@@ -1,0 +1,22 @@
+{
+  "name": "appenginenode",
+  "version": "1.0.0",
+  "description": "para la AppEngine heecha en Node",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.0.0"
+  },
+  "author": "Josue Gonzalez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "ioredis": "^5.0.4",
+    "mysql": "^2.18.1",
+    "redis": "^4.0.6",
+    "socket.io": "^4.4.1"
+  }
+}

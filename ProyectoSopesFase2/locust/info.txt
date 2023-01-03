@@ -1,0 +1,11 @@
+INSTALAR LOCUST// tener instalado python
+    python --version
+    pip install locust
+
+
+VERIFICAR INSTALACION
+    locust --v 
+
+
+EJECUTAR SCRIPT
+locust -f [nombre.py]

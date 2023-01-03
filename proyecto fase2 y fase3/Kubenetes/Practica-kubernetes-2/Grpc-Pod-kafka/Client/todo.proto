@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "HLW";
+
+
+option go_package = "github.com/demo/grpc-server/proto";
+
+package helloworld;
+
+service OperacionAritmetica {
+  rpc LlenarJson (LlenarRequest) returns (LlenarReply) {};
+}
+
+message LlenarRequest {
+  string game_id = 1;
+  string players = 2;
+}
+message LlenarReply {
+  string winner = 1;
+}

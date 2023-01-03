@@ -1,0 +1,32 @@
+version: "3"
+
+services: 
+  rabbitmq:
+    image: rabbitmq
+    ports: 
+      - "5672:5672"
+      - "15672:15672"
+    networks: 
+      - rabbitmqs
+    
+  server:
+    build: ./Node/Server
+    restart: on-failure
+    ports: 
+      - "50051:50051"
+    depends_on: 
+      - rabbitmq
+    networks: 
+      - rabbitmqs
+  
+  consumer:
+    build: ./GoRabbit
+    restart: on-failure
+    depends_on: 
+      - rabbitmq
+    networks: 
+      - rabbitmqs
+
+networks: 
+    rabbitmqs:
+      driver: "bridge"

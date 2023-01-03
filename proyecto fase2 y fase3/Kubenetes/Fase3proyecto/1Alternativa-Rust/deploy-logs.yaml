@@ -1,0 +1,41 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: srv-logs-rust
+  namespace: squidgame
+  labels:
+    app: srv-logs-rust
+spec:
+  selector:
+    matchLabels:
+      app: srv-logs-rust
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: srv-logs-rust
+    spec:
+      hostname: grpc-pod-logs
+      containers:
+        - name: sockets-front
+          image: sergiounix/rust-alternativo-backend-f3
+          ports:
+            - containerPort: 2000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: srv-logs-rust
+  name: svc-react-logs-rust
+  namespace: squidgame
+spec:
+  type: LoadBalancer
+  selector:
+    app: srv-logs-rust
+  ports:
+    - port: 2000
+      targetPort: 2000
+      protocol: TCP

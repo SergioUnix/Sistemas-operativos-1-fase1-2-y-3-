@@ -1,0 +1,23 @@
+//vaciar MONGO
+mongo
+use fase2DB
+db.logs.remove({})
+
+    //verificar que esta vacio
+    db.logs.find()
+
+//vaciar REDIS
+redis-cli
+auth password
+flushdb
+
+    //verificar que esta vacio
+    ZRANGE victorias  0 -1
+
+
+vaciar TIDIS
+   use fase2DB;
+   DELETE FROM logs list
+
+   //verificar
+   select * from logs

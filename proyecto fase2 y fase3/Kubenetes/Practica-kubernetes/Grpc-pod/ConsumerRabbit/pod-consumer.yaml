@@ -1,0 +1,19 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: grpc-consumer
+  namespace: squidgame
+  labels:
+    app: grpc-consumer
+    
+spec:
+    containers:
+        - name: grpc-consumer-pop
+          image: sergiounix/rabbit-consumer-go_fase2
+          env:
+          - name: HOST
+            value: rabbitmq.rabbits
+          ports:
+            - containerPort: 2500
